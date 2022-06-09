@@ -1,0 +1,34 @@
+﻿@model List<u20418002_homework_03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Videos";
+}
+
+<h2>Images of any File Type</h2>
+
+<h5>.............."Media/Documents/Videos" folder</h5>
+
+<br />
+
+<div class="container-fluid">
+
+    <div class="row gallary">
+        @foreach (var file in Model)
+        {
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <a href="@Url.Content("~/Content/Media/Videos/"+file.FileName)">
+                        <video class="card-img-top" height="200" width="150" src="~/Content/Media/Videos/@file.FileName" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">@file.FileName</h5>
+                        @Html.ActionLink("Downlaod", "DownloadVideo", new { fileName = file.FileName }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "DeleteVideo", new { fileName = file.FileName }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+                <br />
+            </div>
+        }
+    </div>
+</div>
+

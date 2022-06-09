@@ -1,0 +1,45 @@
+﻿@model List<u20418002_homework_03.Models.FileModel>
+<!--Receive list of Files from Files Aaction in Controller-->
+@{
+    ViewBag.Title = "Files";
+}
+
+<h2>Document of any File Type</h2>
+<h5>.............."Media/Documents/" folder</h5>
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Create Table-->
+            <table class="table">
+                <thead>
+                    <tr style="background-color: black !important; color: white !important;">
+                        <th>File Name </th>
+                        <th>Download Option</th>
+                        <th>Delete Option</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <!--Loop through Files in Model list From Controller-->
+                    @foreach (var file in Model)
+                    {
+                    <tr>
+                        <td>
+                            @file.FileName
+                        </td>
+                        <td>
+                            <!--Use Razor Action link for download button-->
+                            @Html.ActionLink("Download", "DownloadFile", "Home" , new { fileName = file.FileName, fileType = file.FileType }, new { @class = "btn btn-success" })
+                        </td>
+                        <td>
+                            
+                            @Html.ActionLink("Delete", "DeleteFile","Home" ,  new { fileName = file.FileName, fileType = file.FileType }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+<h5>My Homework 03 Assignment</h5>
+
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <!--Bootstrap class col-lg-9 for display text section -->
+        <div class="col-lg-9">
+            <h2>Description</h2>
+            <p>
+                For this assignment I am tasked with creating a media uploading system.<br />
+                I will need to code four main sections of the program <br />
+                I will build a Program that allows me to upload files of any type  <br />
+                The Images and Videos should be downloadable as well as Deleteable
+            </p>
+        </div>
+        <!--Making use of Razors Html Form method for submitting form with file -->
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <!--Bootstrap class col-lg-3 for Button section-->
+            <div class="col-lg-3">
+                <h2>Option Selection</h2>
+                <div>
+                    <!--Raido buttons from wwww.w3schools.com -->
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio" value="Document">
+                            Document
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio" value="Image">
+                            Image
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio" value="Video">
+                            Video
+                        </label>
+                    </div>
+                </div>
+
+                <!--Input of type file to allow file selection-->
+                <input type="file" class="form-control" name="file" />
+
+                <br />
+
+                <!--Bootstrap button to trigger form aubmission-->
+                <button class="btn btn-default" type="submit">Submit</button>
+
+            </div>
+        }
+    </div>
+</div>
